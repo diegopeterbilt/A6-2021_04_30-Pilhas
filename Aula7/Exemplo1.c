@@ -4,7 +4,9 @@
 
 typedef struct ElementoPrimitivo
 {
-    char *dado;
+    char *nome_processo;
+    int prioridade;
+    int tempo_de_execucao;
     struct ElementoPrimitivo *seguinte;
        
 }Elemento;
@@ -54,6 +56,7 @@ void List_Pilha(Pilha *pilha)
     int i;
     atual = pilha->inicio;
 
+    printf("A pilha tem elementos: %i\n\n", pilha->tamanho);
     printf("-------- TOPO DA PILHA--------\n");
     for(i = 0; i < pilha->tamanho; i++){
         printf(" %s\n", atual->dado);
@@ -61,6 +64,11 @@ void List_Pilha(Pilha *pilha)
     }
     printf("-------- FUNDO DA PILHA--------\n");
 
+}
+
+void Size_Pilha( Pilha *pilha)
+{
+     printf("A pilha tem elementos: %i\n\n", pilha->tamanho);
 }
 
 int main()
@@ -72,14 +80,13 @@ int main()
     if((teste1 = (Pilha *) malloc(sizeof(Pilha))) == NULL)
     return -1;
     Init_Pilha(teste1);
-    for (i = 0; i < 3; i++)
-    {
+
         printf("Digite alguma coisa com ate 10 letras: ");
         scanf("%s", aux);
         Push_Pilha(teste1, aux);
         printf("A pilha tem elementos: %i\n\n", teste1->tamanho);
         List_Pilha(teste1);
-    }
+
     Pop_Pilha(teste1);
     printf("A pilha tem elementos: %i\n\n", teste1->tamanho);
     List_Pilha(teste1);
